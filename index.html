@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Just for Toey</title>
+  <meta name="theme-color" content="#A7D8F0">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-welcome">
+  <a class="skip-link" href="#main">ข้ามไปเนื้อหา</a>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ===== Welcome ===== -->
+    <section id="view-welcome" class="view welcome" data-view="welcome" aria-labelledby="welcome-title">
+      <div class="deco" aria-hidden="true">
+        <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+        <span class="star s1">★</span><span class="star s2">✦</span><span class="star s3">★</span><span class="star s4">✦</span>
+        <span class="heart h1">♥</span><span class="heart h2">♥</span><span class="heart h3">♥</span>
+      </div>
+      <div class="welcome-card">
+        <div class="mini-gift" aria-hidden="true"><i class="lid"></i><i class="box"></i><i class="rib-v"></i></div>
+        <h1 id="welcome-title" data-bind="siteTitle">Just for Toey</h1>
+        <p class="welcome-msg" data-bind="welcomeMessage"></p>
+        <button type="button" class="btn btn-primary" id="start-btn" data-bind="welcomeButton">เปิดของขวัญ</button>
+      </div>
+    </section>
+
+    <!-- ===== Home ===== -->
+    <section id="view-home" class="view" data-view="home" aria-labelledby="home-title" hidden>
+      <div class="page">
+        <h2 id="home-title" data-bind="homeHeading"></h2>
+        <p class="lead" data-bind="homeIntro"></p>
+        <ul class="hub">
+          <li><a class="hub-card" href="#/memories"><span class="ico" aria-hidden="true">📷</span><b data-bind="navMemories"></b></a></li>
+          <li><a class="hub-card" href="#/surprise"><span class="ico" aria-hidden="true">🎁</span><b data-bind="navSurprise"></b></a></li>
+          <li><a class="hub-card" href="#/music"><span class="ico" aria-hidden="true">🎵</span><b data-bind="navMusic"></b></a></li>
+          <li><a class="hub-card" href="#/letter"><span class="ico" aria-hidden="true">💌</span><b data-bind="navLetter"></b></a></li>
+        </ul>
+        <p class="egg-count small">ความลับที่ค้นเจอแล้ว: <span id="egg-count">0</span>/3
+          <button type="button" id="egg-reset" class="link-btn">เริ่มค้นหาใหม่</button></p>
+        <button type="button" class="egg-star" id="egg-star" aria-label="ดาวดวงเล็ก แตะได้">★</button>
+      </div>
+    </section>
+
+    <!-- ===== Sections below are NOT built yet (Phase 2-4) ===== -->
+    <section id="view-memories" class="view" data-view="memories" aria-labelledby="memories-title" hidden>
+      <div class="page">
+        <h2 id="memories-title" data-bind="navMemories"></h2>
+        <p class="lead" id="gal-intro"></p>
+        <p id="gal-banner" class="banner" hidden></p>
+
+        <p id="gal-empty" class="notice" hidden>ยังไม่มีรูปในแกลเลอรี</p>
+        <figure class="gal-stage" id="gal-stage">
+          <button type="button" class="gal-img-btn" id="gal-open" aria-label="ดูรูปขยาย">
+            <img id="gal-img" alt="" decoding="async">
+            <span id="gal-missing" class="gal-missing" hidden></span>
+          </button>
+          <figcaption>
+            <b id="gal-title"></b> <span id="gal-date" class="gal-date"></span>
+            <p id="gal-caption" class="gal-caption"></p>
+          </figcaption>
+        </figure>
+        <div class="gal-controls" id="gal-controls">
+          <button type="button" class="btn btn-soft" id="gal-prev" aria-label="รูปก่อนหน้า">‹</button>
+          <span id="gal-count" aria-live="polite"></span>
+          <button type="button" class="btn btn-soft" id="gal-next" aria-label="รูปถัดไป">›</button>
+        </div>
+
+        <details class="picker" id="picker">
+          <summary>เลือกรูปจากเครื่อง</summary>
+          <p class="small">รูปที่เลือกตรงนี้จะเก็บไว้ในเบราว์เซอร์ของเครื่องนี้เท่านั้น คนอื่นที่เปิดลิงก์จะไม่เห็น (ถ้าอยากให้เห็นทุกคน ดูวิธีใส่รูปถาวรใน README) รองรับ JPG, PNG, WebP, GIF ไม่เกิน 15 MB ต่อรูป ระบบจะย่อรูปให้เล็กลงก่อนเก็บ</p>
+          <div class="picker-actions">
+            <label class="btn btn-soft pick-label" for="pick-input">เลือกรูป</label>
+            <input type="file" id="pick-input" class="sr-only" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
+          </div>
+          <input type="file" id="replace-input" class="sr-only" accept="image/jpeg,image/png,image/webp,image/gif" tabindex="-1" aria-label="เลือกรูปที่จะใช้แทนรูปเดิม">
+          <p id="pick-status" class="status" role="status"></p>
+          <ul id="pending-list" class="pending"></ul>
+          <div class="picker-actions">
+            <button type="button" class="btn btn-primary" id="apply-btn" disabled>ใช้รูปที่เลือก</button>
+            <button type="button" class="btn btn-soft" id="reset-btn">กลับไปใช้รูปเดิม</button>
+          </div>
+        </details>
+      </div>
+
+      <dialog id="gal-lightbox" class="lightbox" aria-label="ดูรูปขยาย">
+        <button type="button" class="lb-close" id="lb-close" aria-label="ปิด">✕</button>
+        <img id="lb-img" alt="">
+        <p id="lb-caption" class="lb-caption"></p>
+        <div class="gal-controls">
+          <button type="button" class="btn btn-soft" id="lb-prev" aria-label="รูปก่อนหน้า">‹</button>
+          <span id="lb-count"></span>
+          <button type="button" class="btn btn-soft" id="lb-next" aria-label="รูปถัดไป">›</button>
+        </div>
+      </dialog>
+    </section>
+    <section id="view-surprise" class="view" data-view="surprise" aria-labelledby="surprise-title" hidden>
+      <div class="page center">
+        <h2 id="surprise-title" data-bind="navSurprise"></h2>
+        <p class="lead" id="gift-hint"></p>
+        <div class="gift-stage">
+          <button type="button" id="gift-box" class="gift-box" aria-expanded="false" aria-controls="gift-card" aria-label="กล่องของขวัญ แตะเพื่อเปิด">
+            <span class="gb-lid"></span><span class="gb-body"></span>
+          </button>
+          <div id="gift-card" class="gift-card" hidden>
+            <p id="gift-msg" class="gift-msg" aria-live="polite"></p>
+            <p id="gift-progress" class="small"></p>
+            <div class="actions">
+              <button type="button" class="btn btn-primary" id="gift-next">ข้อความถัดไป</button>
+              <a class="btn btn-primary" id="gift-home" href="#/home" hidden>กลับหน้าแรก</a>
+              <button type="button" class="btn btn-soft" id="gift-replay" hidden>เปิดอีกครั้ง</button>
+            </div>
+          </div>
+        </div>
+        <div class="cat-wrap">
+          <button type="button" class="cat-egg" id="cat-egg" aria-label="แมวน้อย แตะได้">🐱</button>
+          <p id="cat-bubble" class="cat-bubble" role="status" hidden></p>
+        </div>
+      </div>
+    </section>
+    <section id="view-music" class="view" data-view="music" aria-labelledby="music-title" hidden>
+      <div class="page">
+        <h2 id="music-title" data-bind="navMusic"></h2>
+        <p class="lead" id="music-intro"></p>
+        <p class="small">กด “เล่นที่นี่” เพื่อฟังในหน้านี้ (จะโหลดวิดีโอจาก YouTube เมื่อกดเท่านั้น) บางวิดีโอเจ้าของไม่อนุญาตให้ฝัง ถ้าเล่นไม่ได้ให้กด “เปิดใน YouTube”</p>
+        <ul id="playlist" class="playlist"></ul>
+      </div>
+    </section>
+    <section id="view-letter" class="view" data-view="letter" aria-labelledby="letter-title" hidden>
+      <div class="page center">
+        <h2 id="letter-title" data-bind="navLetter"></h2>
+        <div id="env-wrap">
+          <p class="lead" id="letter-hint"></p>
+          <button type="button" id="env-btn" class="envelope" aria-expanded="false" aria-controls="letter-paper" aria-label="ซองจดหมาย แตะเพื่อเปิดอ่าน">
+            <span class="env-flap"></span><span class="env-seal" aria-hidden="true">♥</span>
+          </button>
+        </div>
+        <article id="letter-paper" class="paper" tabindex="-1" aria-labelledby="letter-to" hidden>
+          <h3 id="letter-to"></h3>
+          <div id="letter-body"></div>
+          <p id="letter-closing" class="letter-closing"></p>
+          <p id="letter-sign" class="letter-sign"></p>
+          <div class="actions">
+            <button type="button" class="btn btn-soft" id="letter-replay">เก็บจดหมายแล้วเปิดใหม่</button>
+            <a class="btn btn-primary" href="#/home">กลับหน้าแรก</a>
+          </div>
+          <button type="button" class="heart-egg" id="heart-egg" aria-label="หัวใจดวงเล็ก แตะได้">♥</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" id="bottom-nav" aria-label="เมนูหลัก" hidden>
+    <a href="#/home" data-nav="home"><span aria-hidden="true">🏠</span><small data-bind="navHome"></small></a>
+    <a href="#/memories" data-nav="memories"><span aria-hidden="true">📷</span><small data-bind="navMemories"></small></a>
+    <a href="#/surprise" data-nav="surprise"><span aria-hidden="true">🎁</span><small data-bind="navSurprise"></small></a>
+    <a href="#/music" data-nav="music"><span aria-hidden="true">🎵</span><small data-bind="navMusic"></small></a>
+    <a href="#/letter" data-nav="letter"><span aria-hidden="true">💌</span><small data-bind="navLetter"></small></a>
+  </nav>
+
+  <dialog id="egg-dialog" class="egg-dialog" aria-labelledby="egg-text">
+    <p id="egg-text"></p>
+    <button type="button" id="egg-close" class="btn btn-primary">ปิด</button>
+  </dialog>
+
+  <noscript><p style="padding:1rem">เว็บนี้ต้องเปิดใช้งาน JavaScript</p></noscript>
+  <script src="data/content.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/gift.js"></script>
+  <script src="js/letter.js"></script>
+  <script src="js/easter.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
