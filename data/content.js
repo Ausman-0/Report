@@ -30,8 +30,8 @@ window.SITE_CONTENT = {
 
   /* ---------- 4) หน้าหลัก (Home) ---------- */
   home: {
-    heading: "ยินดีต้อนรับนะเตย",
-    intro: "เลือกดูได้ตามใจเลย ไม่ต้องเรียงลำดับ"
+    heading: "ยินดีต้อนรับนะจ๊ะอัยอ้วงง",
+    intro: "เลือกดูเลยอะไรไม่เพ"
   },
 
   /* ---------- 5) ชื่อเมนูนำทาง ---------- */
@@ -103,7 +103,7 @@ window.SITE_CONTENT = {
     intro: "เพลงที่อยากให้ฟัง",
     tracks: [
       { title: "ตัวอย่างเพลงที่ 1 (แทนที่ด้วยเพลงของคุณ)", artist: "", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", note: "" },
-      { title: "ตัวอย่างเพลงที่ 2 (แทนที่ด้วยเพลงของคุณ)", artist: "", url: "https://youtu.be/jNQXAC9IVRw", note: "ใส่ข้อความสั้น ๆ ถึงเตยตรงนี้ได้" },
+      { title: "ตัวอย่างเพลงที่ 2 (แทนที่ด้วยเพลงของคุณ)", artist: "", url: "https://youtu.be/Ng_4m5A-3XQ?t=64&si=ArJCojKVvbjLF3e9", note: "เยิฟฟๆ💕" },
       { title: "ตัวอย่างเพลงที่ 3 (แทนที่ด้วยเพลงของคุณ)", artist: "", url: "https://www.youtube.com/watch?v=9bZkp7q19f0", note: "" }
     ]
   }
